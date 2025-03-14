@@ -1,0 +1,30 @@
+		cve
+cve id
+name
+first seen
+update date
+description
+required action
+CVSS vector
+Exploitability Score
+Impact score
+
+user 
+system version
+
+
+
+		user
+user id
+name
+surname
+birthday
+capacity
+
+system
+
+
+
+		system
+system id
+system version
