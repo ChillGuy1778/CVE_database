@@ -153,7 +153,8 @@ CREATE TABLE public."user" (
     birthday date,
     capacity character varying(50),
     system_id integer,
-    company_id integer
+    company_id integer,
+    password character varying(100) NOT NULL
 );
 
 
@@ -240,8 +241,8 @@ COPY public.system (system_id, system_version, product_name, version) FROM stdin
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."user" (user_id, name, surname, mail, birthday, capacity, system_id, company_id) FROM stdin;
-1	Jan	Kowalski	jan.kowalski@cybersecure.com	1990-05-15	Security Analyst	1	1
+COPY public."user" (user_id, name, surname, mail, birthday, capacity, system_id, company_id, password) FROM stdin;
+1	Jan	Kowalski	jan.kowalski@cybersecure.com	1990-05-15	Security Analyst	1	1    $2b$12$WqT7eSzElrYxgR/qZkMLOexSOquEX9JWaA8OABd7CWezEfHk9EDru
 \.
 
 
