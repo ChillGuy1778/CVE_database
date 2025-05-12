@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h1>Welcome to the Journal App</h1>
+    <p class="lead">This system allows teachers to manage grades and students to view their academic progress.</p>
+
+    {% if session.get('role') == 'teacher' %}
+        <a href="{{ url_for('teacher_panel') }}" class="btn btn-primary mt-3">Go to Teacher Panel</a>
+    {% elif session.get('role') == 'student' %}
+        <a href="{{ url_for('student_grades') }}" class="btn btn-success mt-3">View My Grades</a>
+    {% elif session.get('role') == 'admin' %}
+        <a href="{{ url_for('admin_panel') }}" class="btn btn-warning mt-3">Go to Admin Panel</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-outline-primary mt-3">Log in to get started</a>
+    {% endif %}
+</div>
+{% endblock %}

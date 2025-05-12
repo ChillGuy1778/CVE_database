@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Teacher Panel{% endblock %}
+{% block content %}
+<h2 class="mt-4">Teacher Panel</h2>
+
+<form method="POST" class="mt-3 mb-5">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="student_id" class="form-label">Student</label>
+            <select name="student_id" id="student_id" class="form-select" required>
+                {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="subject_id" class="form-label">Subject</label>
+            <select name="subject_id" id="subject_id" class="form-select" required>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="grade_value" class="form-label">Grade</label>
+            <input type="number" name="grade_value" class="form-control" min="1" max="12" required>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Add Grade</button>
+        </div>
+    </div>
+</form>
+
+<h4>Grades Given</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade.student.full_name }}</td>
+            <td>{{ grade.subject.name }}</td>
+            <td>{{ grade.grade_value }}</td>
+            <td>{{ grade.grade_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
