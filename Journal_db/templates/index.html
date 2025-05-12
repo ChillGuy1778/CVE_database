@@ -1,79 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}
-main paggggggge
-{% endblock %}
+{% block title %}Home{% endblock %}
 
-{% block body %}
-<h1>main paggggggge</h1>
-<li>Lorem ipsum dolor sit amet.</li>
-<li>At eaque earum perspiciatis voluptatibus.</li>
-<li>Excepturi fugit harum magni totam.</li>
-<li>Doloremque illum incidunt laborum tenetur.</li>
-<li>Dolorem eius molestias natus reiciendis.</li>
-<li>Cupiditate minima nulla numquam possimus?</li>
-<li>Consectetur exercitationem impedit quis tempora.</li>
-<li>Ipsam magnam praesentium quidem recusandae?</li>
-<li>Amet delectus necessitatibus neque ratione.</li>
-<li>Aut incidunt molestiae pariatur ullam.</li>
-<li>Eveniet non recusandae vitae voluptates.</li>
-<li>Earum exercitationem harum ipsum itaque.</li>
-<li>Modi neque nulla quidem repellendus.</li>
-<li>Dolorum incidunt labore maiores vel.</li>
-<li>Distinctio nemo obcaecati perferendis repellat.</li>
-<li>Asperiores commodi ex omnis quae.</li>
-<li>Asperiores atque eligendi reprehenderit rerum?</li>
-<li>Architecto doloremque ducimus nemo velit?</li>
-<li>Consequuntur, esse, illum. Minima, omnis.</li>
-<li>Exercitationem explicabo omnis soluta suscipit!</li>
-<li>Asperiores commodi consequatur facilis minus?</li>
-<li>At culpa dolores enim vel!</li>
-<li>Assumenda cupiditate nulla pariatur sapiente!</li>
-<li>Dolores doloribus illum molestias nobis.</li>
-<li>Id rerum, vel. Asperiores, corporis.</li>
-<li>Accusamus deserunt expedita fugit rerum?</li>
-<li>Culpa enim eum labore repellendus.</li>
-<li>Consequatur natus officia quo voluptas.</li>
-<li>A at in quod repellat.</li>
-<li>Eius quisquam soluta voluptas voluptate.</li>
-<li>A adipisci eaque nam quam.</li>
-<li>Accusamus ex quibusdam reiciendis sed.</li>
-<li>Autem consectetur deleniti fugit incidunt.</li>
-<li>Cumque dolore fugit molestiae similique.</li>
-<li>Ea impedit porro quasi sint?</li>
-<li>Consequatur labore nostrum nulla quam.</li>
-<li>Ab consectetur delectus dignissimos voluptatum.</li>
-<li>Ab alias culpa reiciendis sed!</li>
-<li>Corporis explicabo facilis nobis voluptatem?</li>
-<li>Blanditiis ducimus magnam neque quo.</li>
-<li>Doloremque facilis odit optio reiciendis?</li>
-<li>Fugit iste officiis quae quaerat!</li>
-<li>Ad nam obcaecati quisquam. Eum!</li>
-<li>Deserunt hic provident quod? Quibusdam?</li>
-<li>Dignissimos dolore nihil non numquam.</li>
-<li>Autem error est inventore soluta!</li>
-<li>Assumenda exercitationem nisi nostrum temporibus.</li>
-<li>Accusantium laboriosam omnis quia rem!</li>
-<li>Animi autem magni repellendus sit.</li>
-<li>Illo inventore perferendis quis sit.</li>
-<li>Ab eius quo recusandae sed.</li>
-<li>Aliquid nihil nobis quaerat quod?</li>
-<li>Ab harum officia quo unde!</li>
-<li>Dolore labore neque optio voluptate?</li>
-<li>Cumque molestiae praesentium quae quos!</li>
-<li>Assumenda fuga quod quos ut!</li>
-<li>Ad commodi dolor explicabo natus.</li>
-<li>Doloremque expedita fuga nulla voluptatem!</li>
-<li>Eum maxime praesentium totam voluptate.</li>
-<li>Consectetur odio reiciendis tempora vitae!</li>
-<li>Aut consequuntur dicta odit veritatis.</li>
-<li>Amet aut beatae culpa facilis.</li>
-<li>Illum inventore ipsum totam velit.</li>
-<li>Accusantium debitis dolore vero voluptatem.</li>
-<li>Laboriosam nostrum obcaecati officiis soluta.</li>
-<li>Dolore magni nemo officiis ut.</li>
-<li>Eaque est exercitationem ipsa perspiciatis!</li>
-<li>Adipisci eius est quis? Dolorum?</li>
-<li>Aut excepturi reiciendis sed ullam.</li>
-<li>Doloremque eos odio quis veritatis.</li>
+{% block content %}
+<div class="mt-5">
+    <h1>Welcome to the Journal App</h1>
+    <p class="lead">This system allows teachers to manage grades and students to view their academic progress.</p>
+
+    {% if session.get('role') == 'teacher' %}
+        <a href="{{ url_for('teacher_panel') }}" class="btn btn-primary mt-3">Go to Teacher Panel</a>
+    {% elif session.get('role') == 'student' %}
+        <a href="{{ url_for('student_panel') }}" class="btn btn-success mt-3">View My Grades</a>
+    {% elif session.get('role') == 'admin' %}
+        <a href="{{ url_for('admin_panel') }}" class="btn btn-warning mt-3">Go to Admin Panel</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-outline-primary mt-3">Log in to get started</a>
+    {% endif %}
+</div>
 {% endblock %}
