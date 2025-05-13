@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}My Grades{% endblock %}
+{% block content %}
+<h2 class="mt-4">My Grades</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Teacher</th>
+            <th>Grade</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade.subject.name }}</td>
+            <td>{{ grade.teacher.full_name }}</td>
+            <td>{{ grade.grade_value }}</td>
+            <td>{{ grade.grade_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
