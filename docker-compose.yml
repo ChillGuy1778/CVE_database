@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypass
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  pgadmin4:
+    image: dpage/pgadmin4:7.6
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: lolako@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: mypass
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+
